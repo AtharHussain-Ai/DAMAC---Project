@@ -6,6 +6,9 @@
   <title>Mairen Residence</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
   <link rel="stylesheet" href="style.css"/>
 </head>
 
@@ -25,10 +28,69 @@
         <span>2025 LUXURY LIVING</span>
       </div>
 
-      <button class="menu-btn">
-        <span></span>
-        <span></span>
-      </button>
+  <!-- HAMBURGER -->
+  <button class="menu-btn" id="menuBtn">
+    <span></span>
+    <span></span>
+  </button>
+
+
+  <!-- OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay">
+
+    <div class="menu-wrapper">
+
+      <!-- LEFT -->
+      <div class="menu-left">
+        <p class="menu-title reveal">MENU</p>
+        <div class="divider reveal"></div>
+
+        <ul class="nav-links">
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">STUDIO</a></li>
+          <li><a href="#">SERVICES</a></li>
+        </ul>
+      </div>
+
+
+      <!-- CENTER -->
+      <div class="menu-center">
+        <div class="divider reveal"></div>
+
+        <ul class="nav-links">
+          <li><a href="#">CAREERS</a></li>
+          <li><a href="#">CONTACT</a></li>
+        </ul>
+      </div>
+
+
+      <!-- RIGHT -->
+      <div class="menu-right">
+        <p class="menu-title reveal">LATEST ARTICLES</p>
+        <div class="divider reveal"></div>
+
+        <div class="articles">
+          <a href="#">How to test your minimum viable product</a>
+          <span>ROY POOLE</span>
+
+          <a href="#">Outsourcing software development versus doing development projects in-house</a>
+          <span>POLLY SCOTT</span>
+
+          <a href="#" class="more">More Articles →</a>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- BOTTOM -->
+    <div class="menu-bottom reveal">
+      <div class="bottom-line"></div>
+      <p>191 Althaea Garden Apt. 246 &nbsp; South Micala</p>
+      <p>Netherlands</p>
+    </div>
+
+  </div>
     </header>
 
 
@@ -66,5 +128,6 @@
 
 </section>
 
+<script src="script.js"></script>
 </body>
 </html>

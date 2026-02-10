@@ -25,8 +25,8 @@ body{
   overflow:hidden;
 
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.683), rgba(0,0,0,0)),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.5)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.548), rgba(0,0,0,0)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.696)),
     url("home.jpg");
 
   background-size:cover;
@@ -105,7 +105,16 @@ body{
 /* ================= MENU BUTTON =================== */
 /* ================================================= */
 
+
+/* =====================
+   BUTTON (FIX OVERLAP)
+===================== */
 .menu-btn{
+  position:fixed;
+  top:32px;
+  right:32px;     
+  z-index:1001;
+
   width:40px;
   height:14.5px;
 
@@ -116,16 +125,184 @@ body{
   background:none;
   border:none;
   cursor:pointer;
-
-  position:relative;
-  z-index:10; /* ALWAYS clickable */
 }
 
 .menu-btn span{
-  width:100%;
   height:1.5px;
+  width:100%;
   background:#fff;
+  transition:.35s;
 }
+
+.menu-btn.active span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
+
+.menu-btn.active span:nth-child(2){
+  transform:rotate(-45deg) translate(5px,-5px);
+}
+
+
+
+/* =====================
+   OVERLAY
+===================== */
+/* =====================
+   GLASS OVERLAY (PREMIUM)
+===================== */
+.menu-overlay{
+  position:fixed;
+  inset:0;
+
+  /* transparent dark glass */
+  background:rgba(8, 8, 8, 0.703);
+
+  /* ⭐ REAL BLUR */
+  backdrop-filter: blur(22px) saturate(120%);
+  -webkit-backdrop-filter: blur(22px) saturate(120%);
+
+  /* soft gradient lighting */
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(255,255,255,0.06), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(255,255,255,0.04), transparent 40%);
+
+  border:1px solid rgba(255, 255, 255, 0.06);
+
+  padding:clamp(30px,5vw,90px);
+
+  opacity:0;
+  pointer-events:none;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  transition:opacity .3s ease;
+
+}
+
+.menu-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+  
+}
+.menu-overlay::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,0.05),
+    transparent 40%
+  );
+  pointer-events:none;
+  
+}
+
+
+.menu-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+
+
+/* =====================
+   GRID DESKTOP
+===================== */
+.menu-wrapper{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:80px;
+}
+
+
+
+/* =====================
+   TITLES
+===================== */
+.menu-title{
+  font-size:11px;
+  letter-spacing:4px;
+  opacity:.4;
+  margin-bottom:25px;
+}
+
+
+
+/* =====================
+   LINES
+===================== */
+.divider,
+.bottom-line{
+  height:1px;
+  background:#ffffff61;
+  margin-bottom:30px;
+}
+
+
+
+/* =====================
+   NAV LINKS
+===================== */
+.nav-links{
+  list-style:none;
+}
+
+.nav-links li{
+  margin-bottom:26px;
+}
+
+.nav-links a{
+  font-size:clamp(32px,5vw,72px);
+  font-weight:300;
+  letter-spacing:3px;
+  text-decoration:none;
+  color:#fff;
+
+  transition:.3s;
+  display:inline-block;
+}
+
+.nav-links a:hover{
+  transform:translateX(10px);
+  opacity:.6;
+}
+
+
+
+/* =====================
+   ARTICLES
+===================== */
+.articles{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.articles a{
+  font-size:14px;
+  opacity:.85;
+  color:#fff;
+  text-decoration:none;
+}
+
+.articles span{
+  font-size:11px;
+  opacity:.4;
+}
+
+
+
+/* =====================
+   BOTTOM
+===================== */
+.menu-bottom{
+  font-size:12px;
+  opacity:.4;
+}
+
+
 
 
 
@@ -167,7 +344,7 @@ body{
   font-weight:200;
   letter-spacing:-7px;
 
-  z-index:2;
+  z-index:0;
 }
 
 .mairen{
@@ -179,7 +356,7 @@ body{
   font-weight:200;
   letter-spacing:-7px;
 
-  z-index:2;
+  z-index:0;
 }
 
 
@@ -277,5 +454,31 @@ body{
 
   .mairen{
     font-size:16vw;
+  }
+    /* stack everything */
+  .menu-wrapper{
+    display:flex;
+    flex-direction:column;
+    gap:60px;
+  }
+
+  /* hide articles completely */
+  .menu-right{
+    display:none;
+  }
+
+  /* center text for mobile premium look */
+  .menu-left,
+  .menu-center{
+    text-align:left;
+  }
+
+  .menu-overlay{
+    justify-content:flex-start;
+    gap:60px;
+  }
+
+  .menu-bottom{
+    margin-top:60px;
   }
 }
