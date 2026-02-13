@@ -260,22 +260,23 @@ function heroImageParallax(){
 
   const hero = document.querySelector(".hero");
 
-  /* clean base */
+  // set initial background position (NO force3D)
   gsap.set(hero, {
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "50% 90%"  // start lower for deeper feel
+    backgroundPosition: "50% 60%"
   });
 
-  /* smoother + stronger movement */
   gsap.to(hero, {
-    backgroundPosition: "50% 10%",  // bigger travel distance
+    backgroundPosition: "50% 40%", // bigger movement = visible parallax
     ease: "none",
     scrollTrigger:{
       trigger: hero,
+
+      // proper full scroll range
       start: "top bottom",
       end: "bottom top",
-      scrub: 2.5   // higher = smoother buttery glide
+
+      scrub: 2,              // smooth
+      invalidateOnRefresh: true
     }
   });
 
