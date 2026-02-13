@@ -5,9 +5,10 @@
   box-sizing:border-box;
   font-family:'Inter', sans-serif;
   
+  
 }
 
-body{
+body,html{
   background:#000000;
     color:#efefef;
   -webkit-font-smoothing:antialiased;
@@ -15,6 +16,39 @@ body{
 }
 
 
+/* loader */
+.loader{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color: #000000;
+  z-index: 999;
+}
+
+/* logo stack */
+.logo-stack{
+  position:relative;
+  width:75vw;
+  max-width:1100px;
+  min-width:320px;
+}
+
+.base,
+.logo-reveal{
+  width:100%;
+  display:block;
+}
+
+.base{ fill:#2a2a2a; }
+
+.logo-reveal{
+  position:absolute;
+  inset:0;
+  fill:#fff;
+  clip-path: inset(0 100% 0 0);
+}
 
 /* ================================================= */
 /* ================= HERO ========================== */
@@ -61,46 +95,43 @@ body{
 /* ================================================= */
 
 .header{
-  position:absolute;
-  top:32px;
-  left:0;
-  right:0;
+  position: fixed;
+  top: 32px;
+  left: 0;
+  width: 100%;
 
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  /* 3 PERFECT COLUMNS */
+  display: grid;
+  grid-template-columns: auto 1fr auto;
 
-  /* always above everything */
-  z-index:5;
+  align-items: center;
+
+  padding: 0 60px;
+  z-index: 9999;
 }
-
 
 
 /* ================= LOGO ================= */
-
 .logo{
-  height:28px;
-  object-fit:contain;
-  transition:.3s ease;
+  height: 28px;
+  display: block;
 }
-
-.logo:hover{
-  transform:scale(1.05);
-  opacity:.85;
-}
-
 
 
 /* ================= TOPBAR ================= */
-
 .topbar{
-  display:flex;
-  gap:80px;
+  justify-self: center;   /* PERFECT CENTER */
 
-  font-size:11px;
-  letter-spacing:3px;
-  color:rgba(255,255,255,.85);
+  display: flex;
+  gap: 80px;
+
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,.85);
+
+  white-space: nowrap;
 }
+
 
 
 
@@ -113,6 +144,7 @@ body{
    BUTTON (FIX OVERLAP)
 ===================== */
 .menu-btn{
+  justify-self: end;
   position:fixed;
   top:32px;
   right:32px;     
@@ -241,6 +273,7 @@ body{
   height:1px;
   background:#ffffff61;
   margin-bottom:30px;
+  
 }
 
 
@@ -445,8 +478,8 @@ body{
   font-size:12px;
   letter-spacing:2px;
   color:#8a8a8a;
-  opacity:0;
-  transform:translateY(10px);
+  opacity:1;
+  transform:none;
   will-change:transform,opacity;
 }
 
@@ -461,7 +494,8 @@ body{
   letter-spacing:-0.4px;
   text-transform:uppercase;
   word-break:break-word;
-  opacity:0;
+  opacity:1;
+  transform: none;
   will-change:transform,opacity;
 }
 
@@ -491,8 +525,8 @@ body{
   line-height:1.85;
   color:#bfbfbf;
   max-width:420px;
-  opacity:0;
-  transform:translateY(16px);
+  opacity:1;
+  transform:none;
   will-change:transform,opacity;
 }
 
