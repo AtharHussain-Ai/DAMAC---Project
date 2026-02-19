@@ -376,3 +376,101 @@ gsap.timeline({
   stagger:0.2,
   duration:1
 }, "-=0.6");
+
+
+
+const header = document.querySelector(".header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+window.addEventListener("load", () => {
+
+ScrollTrigger.config({ limitCallbacks: true });
+
+/* HERO VIDEO SCALE */
+
+gsap.from(".section3_img video", {
+scale: 1.3,
+duration: 2,
+ease: "power4.out",
+scrollTrigger: {
+trigger: ".section3",
+start: "top 75%",
+once: true
+}
+});
+
+/* LINE ANIMATION */
+
+gsap.to(".section3_line", {
+scaleX: 1,
+duration: 1.4,
+ease: "expo.out",
+scrollTrigger: {
+trigger: ".section3",
+start: "top 75%",
+once: true
+}
+});
+
+/* SPLIT TEXT */
+
+const splitHeading = new SplitType(".heading_section3", { types: "lines" });
+const splitPara = new SplitType(".para", { types: "lines" });
+
+/* HEADING ANIMATION */
+
+gsap.from(splitHeading.lines, {
+yPercent: 120,
+opacity: 0,
+stagger: 0.08,
+duration: 1.2,
+ease: "power4.out",
+scrollTrigger: {
+trigger: ".heading_section3",
+start: "top 85%",
+once: true
+}
+});
+
+/* BUTTON ANIMATION */
+
+gsap.from(".section3_buttons button", {
+y: 40,
+opacity: 0,
+stagger: 0.12,
+duration: 0.8,
+ease: "power3.out",
+scrollTrigger: {
+trigger: ".section3_buttons",
+start: "top 90%",
+once: true
+}
+});
+
+/* PARAGRAPH ANIMATION */
+
+gsap.from(splitPara.lines, {
+yPercent: 120,
+opacity: 0,
+stagger: 0.06,
+duration: 1.2,
+ease: "power4.out",
+scrollTrigger: {
+trigger: ".para",
+start: "top 90%",
+once: true
+}
+});
+
+});
